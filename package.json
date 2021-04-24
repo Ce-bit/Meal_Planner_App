@@ -4,7 +4,7 @@
   "description": "This Application Suggests recommended meals to the user to add to a list of saved meals",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./meal_app/meal_frontend/src/index.js --output-path ./meal_app/meal_frontend/static/meal_frontend/",
+    "dev": "webpack --mode development --watch ./meal_app/meal_frontend/src/index.js --output-path ./meal_app/meal_frontend/static/meal_frontend/",
     "build": "webpack --mode production ./meal_app/meal_frontend/src/index.js --output-path ./meal_app/meal_frontend/static/meal_frontend/"
   },
   "keywords": [],
@@ -20,8 +20,13 @@
     "webpack-cli": "^4.6.0"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0"
   }
 }
