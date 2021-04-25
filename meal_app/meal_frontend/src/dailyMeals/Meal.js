@@ -5,7 +5,7 @@ export default function Meal({meal}){
 
     useEffect(()=>{
         fetch(
-            `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=d17305ebeaa24898a370216e0a2e0b6f&includeNutrition=false`
+            `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=bdcf2686fc9c4f0ab8b69e749d440400&includeNutrition=false`
         )
         .then((response) => response.json())
         .then((data) => {
@@ -16,14 +16,16 @@ export default function Meal({meal}){
         })
     }, [meal.id])
 
-    return <article>
-        <h1>{meal.title}</h1>
-        <img src = {imageUrl} alt = "recipe" />
-        <ul className = "instructions">
-            <li>Preparation Time: {meal.readyInMinutes} minutes</li>
-            <li>Number of Servings: {meal.servings}</li>
+    return <div className="card mb-3 mx-auto" style={{width: "25rem"}}> 
+        <img src = {imageUrl} className="card-img-top" alt = "recipe" />
+        <div className="card-body">
+        <h5 className="card-title">{meal.title}</h5>
+        <ul className = "instructions list-group justify-content-center">
+            <li className="list-group-item">Preparation Time: {meal.readyInMinutes} minutes</li>
+            <li className="list-group-item">Number of Servings: {meal.servings}</li>
         </ul>
-        <a href = {meal.sourceUrl}>Go to Recipe </a>
-    </article>
+        <a href = {meal.sourceUrl} target="_blank" >Go to Recipe </a>
+     </div>
+    </div>
 
 }

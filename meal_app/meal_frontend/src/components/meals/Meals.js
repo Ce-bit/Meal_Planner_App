@@ -25,14 +25,16 @@ export class Meals extends Component {
                             <th>Meal</th>
                             <th>Link</th>
                             <th>SavedOn</th>
+                            <th>Delete</th>
                             <th />
                         </tr>
                     </thead>
                     <tbody>
                         { this.props.meals.map( meal => (
                             <tr key={meal.id}>
+                                <td>{meal.id}</td>
                                 <td>{meal.name}</td>
-                                <td>{meal.link}</td>
+                                <td><a href={meal.link} target="_blank" >{meal.link}</a></td>
                                 <td>{meal.savedOn}</td>
                                 <td><button onClick= {this.props.deleteMeal.bind(this, meal.id)} className="btn btn-danger btn-sm">Delete</button></td>
                             </tr>
