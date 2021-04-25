@@ -24,7 +24,7 @@ Deployment
 
 Built With
 React.js - Frontend
-Bootstrap-Vue - Visual Presentation
+Bootstrap- Visual Presentation
 Axios - Request Handling
 Django REST Framework - Backend and REST API
 Authors
