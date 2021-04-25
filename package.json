@@ -4,8 +4,8 @@
   "description": "This Application Suggests recommended meals to the user to add to a list of saved meals",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch ./meal_app/meal_frontend/src/index.js --output-path ./meal_app/meal_frontend/static/meal_frontend/",
-    "build": "webpack --mode production ./meal_app/meal_frontend/src/index.js --output-path ./meal_app/meal_frontend/static/meal_frontend/"
+    "dev": "webpack --mode development --watch ./meal_frontend/src/index.js --output-path ./meal_frontend/static/meal_frontend/",
+    "build": "webpack --mode production ./meal_frontend/src/index.js --output-path ./meal_frontend/static/meal_frontend/"
   },
   "keywords": [],
   "author": "",
