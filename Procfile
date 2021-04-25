@@ -1,3 +1,3 @@
 
 release: python manage.py migrate
-web: gunicorn milark:wsgi --log-file -
+web: gunicorn application:wsgi --log-file -
