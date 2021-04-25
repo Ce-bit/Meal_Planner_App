@@ -1,11 +1,19 @@
-from .models import Meal 
+from .models import Meal
 from rest_framework import viewsets, permissions
-from .serializers import MealSerializer 
+from .serializers import MealSerializer
 
-#Meal ViewSet
+# Meal ViewSets
+
+
 class MealViewSet(viewsets.ModelViewSet):
-    queryset = Meal.objects.all()
     permissions_classes = [
         permissions.AllowAny
     ]
+
     serializer_class = MealSerializer
+
+    def get_queryset(self):
+        return self.request.user.meals.all()  # maybe error
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
