@@ -11,6 +11,7 @@ import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
 import Register from './accounts/Register';
 import PrivateRoute from './common/PrivateRoute';
+import DailyMeal from '../dailyMeals/DailyMeal';
 
 import { Provider } from 'react-redux';
 import store from '../store';
@@ -39,9 +40,10 @@ class App extends Component{
                     <Alerts />
                     <div className="container">
                         <Switch>
-                            <PrivateRoute exact path ="/" component = {Dashboard} /> 
+                            <PrivateRoute exact path ="/" component = {DailyMeal} />
                             <Route exact path ="/register" component ={Register} /> 
                             <Route exact path ="/login" component = {Login} /> 
+                            <PrivateRoute exact path ="/mealList" component = {Dashboard} /> 
                         </Switch>
                     </div>
                 </Fragment>
