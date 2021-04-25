@@ -1,16 +1,18 @@
-from .models import Meal 
+from .models import Meal
 from rest_framework import viewsets, permissions
-from .serializers import MealSerializer 
+from .serializers import MealSerializer
 
-#Meal ViewSet
+# Meal ViewSet
+
+
 class MealViewSet(viewsets.ModelViewSet):
-<<<<<<< Updated upstream
-    queryset = Meal.objects.all()
-    permissions_classes = [
-        permissions.AllowAny
-=======
     permission_classes = [
-        permissions.IsAuthenticated
->>>>>>> Stashed changes
+        permissions.IsAuthenticated,
     ]
     serializer_class = MealSerializer
+
+    def get_queryset(self):
+        return self.request.user.meals.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
