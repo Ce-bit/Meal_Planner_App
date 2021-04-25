@@ -1,4 +1,4 @@
-import { GET_MEALS, DELETE_MEAL, ADD_MEAL } from '../actions/types.js'
+import { GET_MEALS, DELETE_MEAL, ADD_MEAL, LOGOUT_SUCCESS } from '../actions/types.js'
 
 const initialState = {
     meals: [
@@ -24,6 +24,11 @@ export default function(state = initialState, action) {
                 meals: [...state.meals, action.payload]
                 };
 
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                leads: [ ]
+                };
         default:
             return state;
     }
