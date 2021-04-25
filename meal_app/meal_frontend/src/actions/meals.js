@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { createMessage } from './messages'
-
+import { tokenConfig } from './auth'
 import { GET_MEALS, DELETE_MEAL, ADD_MEAL, GET_ERRORS } from './types';
 
 // GET MEALS
-export const getMeals = () => dispatch => {
+export const getMeals = () => (dispatch, getState) => {
     axios
-     .get('/api/meal_api/')
+     .get('/api/meal_api/' , tokenConfig(getState))
      .then(res => {
          dispatch({
              type: GET_MEALS,
@@ -18,24 +18,23 @@ export const getMeals = () => dispatch => {
 };
 
 //DELETE MEAL
-export const deleteMeal = (id) => dispatch => {
+export const deleteMeal = (id) => (dispatch, getState) => {
     axios
-     .delete(`/api/meal_api/${id}/`)
+     .delete(`/api/meal_api/${id}/`, tokenConfig(getState))
      .then(res => {
          dispatch(createMessage({ mealDeleted: "Meal Deleted"}));
          dispatch({
              type: DELETE_MEAL,
              payload: id
          });
-
      }).catch(err => console.log(err));
 
 };
 
 //ADD MEAL
-export const addMeal = (meal) => dispatch => {
+export const addMeal = (meal) => (dispatch, getState) => {
     axios
-     .post("/api/meal_api/", meal)
+     .post("/api/meal_api/", meal, tokenConfig(getState))
      .then(res => {
          dispatch(createMessage({ addMeal: "Meal Added"}));
          dispatch({
@@ -43,15 +42,6 @@ export const addMeal = (meal) => dispatch => {
              payload: res.data
          });
 
-     }).catch(err => {
-         const errors = {
-             msg: err.response.data,
-             status: err.response.status
-         }
-         dispatch({
-             type: GET_ERRORS,
-             payload: errors
-         });
-     });
+     }).catch((err) => dispatch(returnErrors(err.response.data, err.response.status)));
 
 };
