@@ -19,7 +19,7 @@ Go to http://localhost:8080
 Alternatively, use the production website at https://milark.herokuapp.com/#/
 
 Deployment
-(Frontend) Netlify - https://milark.herokuapp.com/#/
+(Frontend) Heroku - https://milark.herokuapp.com/#/
 
 Built With
 React.js - Frontend
