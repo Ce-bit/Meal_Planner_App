@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 export class Header extends Component {
+
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        logout: PropTypes.func.isRequired,
+      };
+
     render() {
+        const { isAuthenticated, user } = this.props.auth;
+
         return (
             <nav className="navbar navbar-expand-sm navbar-light bg-light">
             <div className="container-fluid">
@@ -26,4 +36,8 @@ export class Header extends Component {
     }
 }
 
-export default Header
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+  });
+
+export default connect(mapStateToProps )(Header)
