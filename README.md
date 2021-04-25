@@ -1,6 +1,7 @@
 Meal Planner App
 A web application that allows users to get recommended meals based on caloric count and users can save to a meal list.
 
+Things to Note: At the moment the Get meals can only pull 150 requests a day
 Getting Started
 First npm install
 Clone the repository to your PC and open run the virtualenvironment using the command: pipenv shell in the directory.
