@@ -20,6 +20,10 @@ export class Form extends Component {
         const {name , link } = this.state;
         const meal = {name, link};
         this.props.addMeal(meal);
+        this.setState({
+          name: "",
+          link: ""
+        });
     };
 
     render() {
