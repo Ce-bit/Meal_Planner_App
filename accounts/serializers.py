@@ -18,11 +18,18 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username', 'email', 'password')
         extra_kwargs = {'password': {'write_only': True}}
-
+    
+    def validate_email(self,data):
+        if User.objects.filter(email=data).exists():
+            raise serializers.ValidationError("the given email is already registered")
+        return data
     def create(self, validated_data):
         user = User.objects.create_user(
-            validated_data['username'], validated_data['email'], validated_data['password'])
-
+            validated_data['username'],
+            validated_data['email'],
+            validated_data['password']
+            )
+        user.save()
         return user
 
 # Login Serializer
