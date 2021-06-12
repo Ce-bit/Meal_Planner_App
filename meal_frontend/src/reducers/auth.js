@@ -10,7 +10,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    token: localStorage.getItem('token'),
+    token: null,
     isAuthenticated: null,
     isLoading: false,
     user: null
@@ -26,17 +26,25 @@ export default function(state = initialState, action) {
         case USER_LOADED:
             return {
               ...state,
-              isAuthenticated: true,
+              isAuthenticated:false,
               isLoading: false,
               user: action.payload,
             };
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
-            localStorage.setItem('token', action.payload.token);
+            // localStorage.setItem('token', action.payload.token);
+            // return {
+            //     ...state,
+            //     ...action.payload,
+            //     isAuthenticated: true,
+            //     isLoading: false
+            // }
+            localStorage.removeItem('token');
             return {
                 ...state,
-                ...action.payload,
-                isAuthenticated: true,
+                token: null,
+                user: null,
+                isAuthenticated: false,
                 isLoading: false
             }
         case AUTH_ERROR:

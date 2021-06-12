@@ -41,8 +41,8 @@ class App extends Component{
                     <div className="container">
                         <Switch>
                             <PrivateRoute exact path ="/" component = {DailyMeal} />
-                            <Route exact path ="/register" component ={Register} /> 
                             <Route exact path ="/login" component = {Login} /> 
+                            <Route exact path ="/register" component ={Register} /> 
                             <PrivateRoute exact path ="/mealList" component = {Dashboard} /> 
                         </Switch>
                     </div>
